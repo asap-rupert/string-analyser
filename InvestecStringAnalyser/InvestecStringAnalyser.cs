@@ -20,7 +20,7 @@ namespace InvestecStringAnalyser
             Console.WriteLine("Please Enter Text to be Analysed:\n");
             string text = Console.ReadLine();
 
-            //UNCOMMENT INPUT VALIDATION
+            //UNCOMMENT FOR INPUT VALIDATION
             /*    while (text == "" || text.All(Char.IsLetter))
                 {
                     Console.WriteLine("Invalid! Please Enter Valid Text to be Analysed:");
@@ -37,7 +37,7 @@ namespace InvestecStringAnalyser
 
             string option = Console.ReadLine();
 
-            //UNCOMMENT NPUT VALIDATION
+            //UNCOMMENT FOR INPUT VALIDATION
             //int cleanText = 0;
             /*  
                 while (!int.TryParse(option, out  cleanText))
@@ -111,6 +111,7 @@ namespace InvestecStringAnalyser
             {
                 text = text.ToLower();
                 int count = 0;
+                //Create counter to increment on each unique vowel present
                 count += text.Contains("a") ? 1 : 0;
                 count += text.Contains("e") ? 1 : 0;
                 count += text.Contains("i") ? 1 : 0;
@@ -135,7 +136,7 @@ namespace InvestecStringAnalyser
                 vowel = 0;
                 cons = 0;
                 len = str.Length;
-
+                //loop through all letters and check for vowels or consonants
                 for (i = 0; i < len; i++)
                 {
 
@@ -143,6 +144,7 @@ namespace InvestecStringAnalyser
                     {
                         vowel++;
                     }
+                    //making sure the 'non vowel' is within the alphabet
                     else if ((str[i] >= 'a' && str[i] <= 'z'))
                     {
                         cons++;
