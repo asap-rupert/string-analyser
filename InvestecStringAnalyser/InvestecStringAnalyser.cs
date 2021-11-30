@@ -10,7 +10,7 @@ namespace InvestecStringAnalyser
         {
             DuplicateOperations duplicateOperations = new DuplicateOperations();
             DuplicateOperations vowelOperations = new VowelOperations();
-            DuplicateOperations vowelConsOperations = new VowelConsOperations();
+            DuplicateOperations vowelOrNonOperations = new VowelOrNonOperations();
 
             // Display title.
             Console.WriteLine("Investec Text Analyser\r");
@@ -50,9 +50,7 @@ namespace InvestecStringAnalyser
             {*/
             if (option.Contains("1"))
                 {
-
                     Console.WriteLine(duplicateOperations.TextOperation(text));
-
 
                 }
 
@@ -64,7 +62,7 @@ namespace InvestecStringAnalyser
 
                 if (option.Contains("3"))
                 {
-                    Console.WriteLine(vowelConsOperations.TextOperation(text));
+                    Console.WriteLine(vowelOrNonOperations.TextOperation(text));
 
                 }
             //}
@@ -100,7 +98,7 @@ namespace InvestecStringAnalyser
                 if (dups != "")
                     return "Found the following Duplicates: " + dups;
                 else
-                    return "No duplicate valuies were found";
+                    return "No duplicate values were found";
             }
 
         }
@@ -125,18 +123,19 @@ namespace InvestecStringAnalyser
             }
         }
 
-        public class VowelConsOperations : DuplicateOperations
+        public class VowelOrNonOperations : DuplicateOperations
         {
             public override string TextOperation(string text)
             {
-                string str = text.ToLower();
-                int i, len, vowel, cons;
+                //change to lower and remove whitespace
+               string str =  Regex.Replace(text, @"\s","").ToLower();
 
+                int i, len, vowel, cons;
 
                 vowel = 0;
                 cons = 0;
                 len = str.Length;
-                //loop through all letters and check for vowels or consonants
+                //loop through all letters and check for vowels or non vowels
                 for (i = 0; i < len; i++)
                 {
 
@@ -144,8 +143,7 @@ namespace InvestecStringAnalyser
                     {
                         vowel++;
                     }
-                    //making sure the 'non vowel' is within the alphabet
-                    else if ((str[i] >= 'a' && str[i] <= 'z'))
+                    else
                     {
                         cons++;
                     }
