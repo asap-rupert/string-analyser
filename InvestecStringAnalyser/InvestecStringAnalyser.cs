@@ -71,7 +71,7 @@ namespace InvestecStringAnalyser
         public class DuplicateOperations
         {
 
-            static int characters = 256;
+            static readonly int characters = 256;
 
             /* Fills count array with
                frequency of characters */
@@ -93,7 +93,8 @@ namespace InvestecStringAnalyser
                 FillCharCounts(text, count);
                 string dups = "";
                 for (int i = 0; i < characters; i++)
-                    if (count[i] > 1)
+                //if character count is greater than 1 and not a space then add to string
+                    if (count[i] > 1 && (char)i != ' ')
                         dups += (char)i;
                 if (dups != "")
                     return "Found the following Duplicates: " + dups;
