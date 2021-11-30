@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace InvestecStringAnalyser
 {
-    public class Program
+    public class InvestecStringAnalyser
     {
         static void Main(string[] args)
         {
@@ -12,15 +12,15 @@ namespace InvestecStringAnalyser
             DuplicateOperations vowelOperations = new VowelOperations();
             DuplicateOperations vowelConsOperations = new VowelConsOperations();
 
-            // Display title as the C# console calculator app.
+            // Display title.
             Console.WriteLine("Investec Text Analyser\r");
             Console.WriteLine("------------------------\n");
 
-            // Ask the user to type the first number.Enter Type a sentence, and then press Enter");
+            // Ask the user to type the text.";
             Console.WriteLine("Please Enter Text to be Analysed:\n");
             string text = Console.ReadLine();
 
-            //INPUT VALIDATION
+            //UNCOMMENT INPUT VALIDATION
             /*    while (text == "" || text.All(Char.IsLetter))
                 {
                     Console.WriteLine("Invalid! Please Enter Valid Text to be Analysed:");
@@ -37,7 +37,7 @@ namespace InvestecStringAnalyser
 
             string option = Console.ReadLine();
 
-            //INPUT VALIDATION
+            //UNCOMMENT NPUT VALIDATION
             //int cleanText = 0;
             /*  
                 while (!int.TryParse(option, out  cleanText))
@@ -45,10 +45,10 @@ namespace InvestecStringAnalyser
                     Console.Write("This is not valid input. Please enter an integer value: ");
                     option = Console.ReadLine();
                 }
-            */
+            
             if (option.Contains("1") || option.Contains("2") || option.Contains("3"))
-            {
-                if (option.Contains("1"))
+            {*/
+            if (option.Contains("1"))
                 {
 
                     Console.WriteLine(duplicateOperations.TextOperation(text));
@@ -67,18 +67,13 @@ namespace InvestecStringAnalyser
                     Console.WriteLine(vowelConsOperations.TextOperation(text));
 
                 }
-                //else
-                //{
-                //    Console.WriteLine("No correct options selected!");
-                //    Console.ReadLine();
-                //}
-            }
+            //}
         }
 
         public class DuplicateOperations
         {
 
-            static int NO_OF_CHARS = 256;
+            static int characters = 256;
 
             /* Fills count array with
                frequency of characters */
@@ -96,10 +91,10 @@ namespace InvestecStringAnalyser
 
                 // Create an array of size 256 and
                 // fill count of every character in it
-                int[] count = new int[NO_OF_CHARS];
+                int[] count = new int[characters];
                 FillCharCounts(text, count);
                 string dups = "";
-                for (int i = 0; i < NO_OF_CHARS; i++)
+                for (int i = 0; i < characters; i++)
                     if (count[i] > 1)
                         dups += (char)i;
                 if (dups != "")
